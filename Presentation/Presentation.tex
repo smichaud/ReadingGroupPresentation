@@ -1,4 +1,4 @@
-\documentclass[14pt,t]{beamer}
+\documentclass[[aspectratio=169,14pt,t]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
@@ -18,6 +18,9 @@
 
 \usetheme{Warsaw} % With horizontal table of content on top
 
+\usepackage{pgfpages}
+\setbeameroption{show notes}
+\setbeameroption{show notes on second screen=right}
 \setbeamertemplate{navigation symbols}
 {%
 \vbox{%
@@ -48,6 +51,8 @@
 
 \begin{frame}
     \titlepage
+    \note{Present yourself}\\
+    \note{Present your supervisor}
 \end{frame}
 
 \input{./tex/Introduction}
