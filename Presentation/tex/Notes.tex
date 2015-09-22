@@ -14,6 +14,7 @@
 \begin{frame}
     \frametitle{FABMAP 2008}
     \begin{itemize}
+        \item Fast Appearance-Based Mapping (FAB-MAP)
         \item What/Why place recognition (SLAM)
         \item Quick overview of SLAM (video of SLAM in action, figure show loop closure)
         \item 100\% precision, because false positive break the shit + update appearance model with new sample of known place !
@@ -70,7 +71,7 @@
 \begin{frame}
     \frametitle{FABMAP 2.0}
     \begin{itemize}
-        \item add geometric verification (essential at large scale)
+        \item add geometric verification(100 most likely samples) (essential at large scale)... add a figure to show what it is
         \item Adapt other part for scalable : approx k-means
         \item random init yiels poor results :
     \end{itemize}
@@ -79,7 +80,7 @@
 \begin{frame}
     \frametitle{FABMAP 2.0}
     \begin{itemize}
-        \item To avoid these effects, we choose the initial cluster centers for k-means using a fixed-radius incremental pre-clustering, where the data points are inspected sequentially, and a new cluster center is initialized for every data point that lies further than a fixed threshold from all existing clus-ters. This is similar to the furthest-first initialization tech-nique (Dasgupta and Long 2005), but more computation-ally tractable for large data sets. 
+        \item To avoid these effects, we choose the initial cluster centers for k-means using a fixed-radius incremental pre-clustering, where the data points are inspected sequentially, and a new cluster center is initialized for every data point that lies further than a fixed threshold from all existing clus-ters. This is similar to the furthest-first initialization tech-nique (Dasgupta and Long 2005), but more computation-ally tractable for large data sets. (show figure 6,7)
     \end{itemize}
 \end{frame}
 
@@ -88,13 +89,37 @@
     \begin{itemize}
         \item We also modify k-means by adding a cluster merging heuristic. After each k-means iteration, if any two cluster centers are closer than a fixed threshold, one of the two cluster centers is re-initialized to a random location.
         \item This boosted performance of the system
+        \item They ajusted the likelihood to work with the inverted index (to expensive to compute with negative example)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{FABMAP 2.0}
+    \begin{itemize}
+        \item Ground thruth = GPS, correct match less than 40m... A bit relax (89\% were separated by less than 5 m, and 98\% by less than 10m)
+        \item Add result Figure 11
+        \item Maybe table 3, indicate that CL vs NB for 100\% precision
+        \item 14ms filter update + geo check, 423ms for SURF, 60ms Quantization
+        \item 4400 times faster than 1.0, spase representation lead to O(1) instead of O(\#vocab)
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{OpenFABMAP}
     \begin{itemize}
-        \item Quick note: Let them know that there is differences between FABMAP and OpenFABMAP implementation (binary bow, size of descriptors...)
+        \item Quick note: Let them know that there is differences between FABMAP and OpenFABMAP implementation (binary bow, size of descriptors, probabilistic equations...)
+        \item There is fabmap binaries available
+        \item Codebook and CLT generation
+        \item Can change keypoints detector and descriptors (STAR best for them)
+        \item Does not have implementations 2.0
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{OpenFABMAP}
+    \begin{itemize}
+        \item Tested on 10 dataset (single cam, omnidirectional)
+        \item At best reported 16\% recall for 100\% precision (show figure)
         \item Show little demo with my dataset
     \end{itemize}
 \end{frame}
