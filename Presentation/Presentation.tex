@@ -14,13 +14,17 @@
 \DeclareUnicodeCharacter{00A0}{ } % remove the bib encoding problem
 \setbeamertemplate{bibliography item}{} %remove the reference
 
-\usepackage{multimedia} % To include video
+\usepackage{hyperref}
+%\usepackage{multimedia} % To include video
+%\usepackage{media9}
 
 \usetheme{Warsaw} % With horizontal table of content on top
 
 \usepackage{pgfpages}
-\setbeameroption{show notes}
-\setbeameroption{show notes on second screen=right}
+
+%\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen=right}
+
 \setbeamertemplate{navigation symbols}
 {%
 \vbox{%
@@ -56,7 +60,6 @@
     \note[item]{FABMAP : 2008 International Journal of Robotics Research}
 \end{frame}
 
-%\input{./tex/Notes}
 \input{./tex/Introduction}
 \input{./tex/Fabmap1.tex}
 \input{./tex/Fabmap2.tex}
