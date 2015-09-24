@@ -26,26 +26,79 @@
     \note[item]{Place recognition}
     \note[item]{Appearance, using visual features from camera as oposed to geometrical features}
     \note[item]{New observation != simple nearest neighbour}
-    \note[item]{SLAM ? I'll let you decide}
+    \note[item]{SLAM ? I'll let you decide (counter-intuitive or incomplete)}
 \end{frame}
 
-\subsection{Basic concepts}
+\subsection{Basic Concepts}
+\begin{frame}{Basic concepts}
+    \begin{itemize}
+        \item Map: metric vs topological
+        \item \textbf{Simultaneous Localization And Mapping (SLAM)}
+        \item Loop closure
+        \item Perceptual aliasing
+        \item Kidnapped robot
+        \item Multi-session mapping
+    \end{itemize}
+    \note[item]{I give more information than I really need here, but I think it is good for general robotics knowledge}
+    \note[item]{Also, introduction+fabmap 1.0 apply to all 3 articles (summary in all)}
+\end{frame}
+
 \begin{frame}{Map: Metric vs Topological}
     \begin{figure}
         \includegraphics[width=1.0\textwidth]{./media/metric_vs_topo.png}
-        \caption{Source: http://www.autonomousrobotsblog.com/}
+        \caption{\tiny Source: http://www.autonomousrobotsblog.com/}
     \end{figure}
     \note[item]{Metric (distance between all members)}
     \note[item]{Topological (set of points, along with a set of neighbourhoods for each point)}
-    \note[item]{There is mathematical definition available if you prefer...}
+    \note[item]{Topological is more abstract... Or if you prefer metric is a specialization of topo}
+    \note[item]{There is mathematical definition available if you a fan of it...}
 \end{frame}
 
 \begin{frame}{Simultaneous Localization And Mapping (SLAM)}
     \begin{center}
         \href{https://www.youtube.com/watch?v=y7OnimZRj2w}{\includegraphics[width=1.0\textwidth]{./media/loop_closure.png}}
+        {\tiny Source: GLO-4001/GLO-7021 Introduction à la robotique mobile}
     \end{center}
+    \note[item]{Overview: position, features, uncertainty/covariance, path/loop}
     \note[item]{SLAM demo... Find points, update map...}
-    \note[item]{Place recognition (what and why)}
     \note[item]{Loop closure}
-    \note[item]{How is it related to FAB-MAP: topological loop closure}
 \end{frame}
+
+\begin{frame}{Perceptual Aliasing, Kidnapped Robot}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=1\textwidth]{./media/perceptual_aliasing2.png}\newline
+                {\tiny Source: Fab-map: Probabilistic localization and mapping in the space of appearance~\cite{fabmap2008b}}
+            \end{center}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\textwidth]{./media/map1.png}\newline
+                \includegraphics[width=\textwidth]{./media/map2.png}\newline
+                {\tiny Source: GLO-4001/GLO-7021 Introduction à la robotique mobile}
+            \end{center}
+        \end{column}
+    \end{columns}
+    \note[item]{Perceptual aliasing is simply errors caused by similar appearance}
+    \note[item]{Kidnapped Robot ?}
+    \note[item]{Why is that a problem ?}
+\end{frame}
+
+\begin{frame}{Multi-Session Mapping}
+    \begin{center}
+        \includegraphics[width=0.85\textwidth]{./media/multi-session.png}\newline
+        {\tiny Source: http://introlab.github.io/rtabmap/}
+        \note[item]{Multi-session mapping... Combining the results of multiple simultaneous localisation and mapping}
+        \note[item]{Therefore you must be able to do place recognition to match overlapping regions}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Relation with FAB-MAP}
+    So...\newline\\
+    FAB-MAP does \textbf{place recognition} and \textbf{new place detection} and can therefore be considered as a \textbf{topological SLAM}.\newline\\
+    It is \textbf{complementary to metric SLAM}, for which loop closure, kidnapped robot and multi-session mapping problems are challenging.
+    \note[item]{Could be seen as a graph where node == place and link means adjacent}
+    \note[item]{It is difficult because your current position is often based on the last position}
+\end{frame}
+

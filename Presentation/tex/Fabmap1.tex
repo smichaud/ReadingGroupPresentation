@@ -1,33 +1,22 @@
 \section{FAB-MAP 1.0}
 
 \subsection{Introduction}
-\begin{frame}{Let's talk about that article}
-   \begin{enumerate}
-       \item But do they achieve that ???
-       \note[item]{Just for your information, this is what it stands for}
-       \note[item]{Already introduced the main idea that it is place recognition + detect new places = SLAM}
-   \end{enumerate} 
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-    \frametitle{FAB-MAP 2008}
-    \begin{itemize}
+\begin{frame}{FAB-MAP 1.0}
+    \begin{enumerate}
+        \item Based on bag of words (BoW)
         \item 100\% precision, because false positive break the shit + update appearance model with new sample of known place !
-        \item What is perceptual aliasing (with figure)
         \item CLT for visual words co-occurence
-    \end{itemize}
+    \end{enumerate}
+    \note[item]{}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Chow Liu Tree (some slide about it)}
+\begin{frame}{Chow Liu Tree (some slide about it)}
     A further salient aspect of the data is that visual words do not occur independently – indeed, word occurrence tends to be highly correlated. For example, words asso-ciated with car wheels and car doors are likely to be observed simultaneously. We capture these dependencies by learning a tree-structured Bayesian network using the ChowLiu algorithm (Chow and Liu 1968),which yields the optimal approximation to the joint distribution over word occurrence within the space of tree-structured networks.
 \end{frame}
 
-\begin{frame}
-    \frametitle{Results}
+\begin{frame}{Results}
     \begin{itemize}
         \item Talk about processing time in results
     \end{itemize}
 \end{frame}
+
