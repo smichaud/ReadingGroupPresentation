@@ -10,36 +10,52 @@
     \end{quotation}
     \begin{itemize}
         \item General intuition of the work in 2.0
-            \begin{itemize}
-                \item Multiple changes for scalability
-            \end{itemize}
+            %\begin{itemize}
+                %\item Multiple changes for scalability
+            %\end{itemize}
     \end{itemize}
+    \note[item]{Read quotation}
+    \note[item]{I will not go into details... General intuition/main points.}
 \end{frame}
 
-\subsection{Give me a title}
+\subsection{Modifications}
 \begin{frame}
-    \frametitle{FAB-MAP 2.0}
+    \frametitle{Modifications}
     \begin{itemize}
-        \item Key component: inverted index (did not work out of the box)
-        \item They ajusted the likelihood to work with the inverted index (to expensive to compute with negative example)
-        \item It deals with negative example to enable inverted index.
-        \item Cannot add information of observations of a previously seen scene (only the first observation of the place is taken into account)
-        \item Some information lost vs FAB-MAP 1.0
-
-        \item add geometric verification(100 most likely samples) (essential at large scale)... add a figure to show what it is
-        \item Pseudocode for the main likelihood calculation required in FAB-MAP is given in Algorithm 1. The complexity of this implementation is O(\#vocab)
-        \item validate the work on a 1000km data set; (show the SLAM figure)... Really aimed at large scale (other with 66km but they have the biggest)
+        \item Sparse approximation
+        \item Inverted index
+        \item Appearance likelihood changed in two ways
+            \begin{enumerate}
+                \item Negative observations greatly outnumber positive ones, and are also generally less informative.
+                \item Data association
+            \end{enumerate}
+        \item Implementation in O(\#vocab)
     \end{itemize}
+    \note[item]{Sparse approx of the to the FAB-MAP model}
+    \note[item]{Implementation using inverted index... What is it ?}
+    \note[item]{If a document is considered as a list of word identifiers, then an inverted index maintains the inverse mapping from words to documents.}
+    \note[item]{Appearance likelihood was changed in two ways to work with inverted index}
+    \note[item]{*Single* probabilistic term for all observations of a place. Lead to some (negligible) information lost}
+    \note[item]{Data association: sample-based instead of average appearance of a location (Location == set of samples.... Better suited for multi-modal)}
+    \note[item]{They give the example of the open vs closed door}
 \end{frame}
 
-\subsection{K-means}
-\begin{frame}{K-Means Modifications}
+\subsection{Modifications}
+\begin{frame}{Geometric Verification}
+    \begin{itemize}
+        \item add geometric verification(100 most likely samples) (essential at large scale)... add a figure to show what it is
+    \end{itemize}
+    \includegraphics[width=1.0\textwidth]{./media/geo_verif.jpg}
+\end{frame}
+
+\begin{frame}{K-Means}
     \begin{itemize}
         \item Approx algo of k-means
-        \item To avoid these effects, we choose the initial cluster centers for k-means using a fixed-radius incremental pre-clustering, where the data points are inspected sequentially, and a new cluster center is initialized for every data point that lies further than a fixed threshold from all existing clus-ters. This is similar to the furthest-first initialization tech-nique (Dasgupta and Long 2005), but more computation-ally tractable for large data sets. (show figure 6,7)
+        \item To avoid these effects, we choose the initial cluster centers for k-means using a fixed-radius incremental pre-clustering, where the data points are inspected sequentially, and a new cluster center is initialized for every data point that lies further than a fixed threshold from all existing clusters. This is similar to the furthest-first initialization technique (Dasgupta and Long 2005), but more computation-ally tractable for large data sets. (show figure 6,7)
         \item We also modify k-means by adding a cluster merging heuristic. After each k-means iteration, if any two cluster centers are closer than a fixed threshold, one of the two cluster centers is re-initialized to a random location.
         \item This boosted performance of the system
     \end{itemize}
+    \note[item]{To maintain system performance at scale, they had to make some changes}
 \end{frame}
 
 \begin{frame}{K-Means words}
@@ -57,6 +73,8 @@
 \begin{frame}
     \frametitle{Results}
     \begin{itemize}
+        \item validate the work on a 1000km data set; (show the SLAM figure)... Really aimed at large scale (other with 66km but they have the biggest)
+        \item 1000 km data, compared with tf-idf ranking measurements
         \item Ground thruth = GPS, correct match less than 40m... A bit relax (89\% were separated by less than 5 m, and 98\% by less than 10m)
         \item Add result Figure 11
         \item Maybe table 3, indicate that CL vs NB for 100\% precision
