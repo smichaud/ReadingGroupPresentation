@@ -1,7 +1,6 @@
 \section{FAB-MAP 1.0}
 
 \subsection{Overview}
-% [TODO]: Rethink or change slide - 2015-10-05 11:37am
 \begin{frame}{Overview (Key Elements)}
     \begin{itemize}
         \item Probabilistic
@@ -11,6 +10,7 @@
         \item O($n_{places}$), while previously done in O($n_{places}^3$)
         \item Processing in real time for thousands of places
     \end{itemize}
+    \note[item]{Section: Overview}
     \note[item]{Probabilistic based framework}
     \note[item]{Bag of visual Words (SURF, k-means)}
     \note[item]{Complexity of ...}
@@ -28,8 +28,8 @@
         \item Similarity metric: Kullback-Leibler
             \includegraphics[width=0.6\textwidth]{./media/kullback_leibler.png}
     \end{itemize}
-    \note[item]{Goal: approximate high-dimensional discrete distributions}
-    \note[item]{Probability distribution on n discrete variables (z: notation for observation)}
+    \note[item]{Goal here: approximate high-dimensional discrete distributions}
+    \note[item]{Probability distribution on n discrete variables (z: notation for observation, binary word)}
     \note[item]{P(Z) the general distribution without structure, exponential in n = intractable}
     \note[item]{You want to approximate P(Z) by Q(Z) with a special structure = tractable}
     \note[item]{To maximize the similarity between the distribution: Kullback-Leibler}
@@ -54,15 +54,7 @@
     \note[item]{CLT described a polynomial time algorithm to select the best such distribution}
 \end{frame}
 
-\subsection{Probabilistic Navigation using Appearance}
-\begin{frame}{Representing Appearance}
-    \begin{itemize}
-        \item Location: described by a distribution over appearance words
-        \item Representing Appearance: bow, binary over vocab.
-    \end{itemize}
-    \note[item]{Just an overview of the probabilistic navigation}
-\end{frame}
-
+\subsection{Probabilistic Navigation Using Appearance}
 \begin{frame}{Representing Locations}
     \begin{itemize}
         \item At time $k$, there is $n_k$ discrete locations $\mathcal{L}^k=\{L_1,...,L_{n_k}\}$
@@ -75,6 +67,9 @@
                 \item Each of the feature generating objects $e_i$ are generated independently by the location
             \end{itemize}
     \end{itemize}
+    \note[item]{Now I will talk about the Probabilistic Navigation Using Appearance}
+    \note[item]{First I will explain how they represent a location}
+    \note[item]{}
     \note[item]{Rather than model each of the locations directly in terms of which features are likely to be observed}
     \note[item]{Model each location as a set...}
 \end{frame}
@@ -85,7 +80,7 @@
             Reasons for $e$:
             \begin{enumerate}
                 \item Natural framework for incorporating data from multiple sensors
-                \item It facilitate factoring the distribution $p(Z|L_j)$ into two parts — a simple model for each location composed of independent variables $e_i$ , and a more complex model that captures the correlations between detections of appearance words $p(z_i|Z_k)$
+                \item It facilitate factoring the distribution $p(Z|L_j)$ into two parts% — a simple model for each location composed of independent variables $e_i$ , and a more complex model that captures the correlations between detections of appearance words $p(z_i|Z_k)$
             \end{enumerate}
         \end{column}
 
@@ -93,6 +88,12 @@
             \includegraphics[width=\textwidth]{./media/event.png}
         \end{column}
     \end{columns}
+    \note[item]{You can see a representation of the model on the right}
+    \note[item]{They say they are 2 reasons to introduce the hidden variable}
+    \note[item]{Natural framework for incorporating data from multiple sensors}
+    \note[item]{It facilitate factoring the distribution $p(Z|L_j)$ into two parts}
+    \note[item]{a simple model for each location composed of independent variables $e_i$}
+    \note[item]{and a more complex model that captures the correlations between detections of appearance words $p(z_i|Z_k)$}
 \end{frame}
 
 \begin{frame}{Estimating Location via Recursive Bayes}
@@ -119,7 +120,7 @@
         \item Compared 2 different approximations:
             \begin{enumerate}
                 \item Mean field
-                \item Sampling
+                \item Sampling (Monte Carlo)
             \end{enumerate}
     \end{itemize}
     \note[item]{Normalization have to be modified to deal with new places}
@@ -148,7 +149,7 @@
         \item Performance on the inference is strongly dependent on the normalizing term
         \item Fully capture the visual variety of the environment
         \item Very slight smoothing of the data likelihood values
-        \item Reject most outliers, still allow loop closure after 2-3 corresponding images
+        \item Reject most outliers, still allows loop closure after 2-3 corresponding images
     \end{itemize}
     \note[item]{To fully capture the visual variety of environment, large set of place models... need time and data}
     \note[item]{Workaround, Smoothing prevent asserting loop closure with high confidence for single image pair}
@@ -174,6 +175,13 @@
         \item The smoothing parameter: $\sigma=0.99$
         \item Prior probability that a topological link with an unknown endpoint leads to a new place: 0.9
     \end{itemize}
+    \note[item]{Section: Results}
+    \note[item]{Chow Liu tree built from 2800 images from 28 km (10 meters apart)}
+    \note[item]{Vocabulary of approximately 11000 words}
+    \note[item]{2 hours on 3Ghz Pentium IV}
+    \note[item]{Detector model: $p(z_i=1|e_i=0)=0$ and $p(z_i=0|e_i=1)=0.39$}
+    \note[item]{The smoothing parameter: $\sigma=0.99$}
+    \note[item]{Prior probability that a topological link with an unknown endpoint leads to a new place: 0.9}
 \end{frame}
 
 \begin{frame}{Word Examples}
@@ -187,9 +195,9 @@
         \item Two outdoor datasets
             \begin{enumerate}
                 \item New College: perceptual aliasing
-                \item City Center: presence of scene change (dynamic objects, light changes)
+                \item City Center: presence of scene changes (dynamic objects, light changes)
             \end{enumerate}
-        \item Show results using Chow Liu tree and monte carlo (best results)
+        \item Show results using Chow Liu tree and Monte Carlo (best results)
         \item Goal: 100\% precision
         \item Recall of 48\% for New College and 37\% for City Center
     \end{itemize}

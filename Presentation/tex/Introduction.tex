@@ -25,7 +25,7 @@
     \note[item]{Read it first}
     \note[item]{Place recognition}
     \note[item]{Appearance, using visual features from camera as oposed to geometrical features}
-    \note[item]{New observation != simple nearest neighbour}
+    \note[item]{New observation != Localization (simple nearest neighbour)}
     \note[item]{SLAM ? I'll let you decide (counter-intuitive or incomplete)}
 \end{frame}
 
@@ -39,6 +39,7 @@
         \item Kidnapped robot
         \item Multi-session mapping
     \end{itemize}
+    \note[item]{I will introduce some basics concepts... Do not read all points}
     \note[item]{I give more information than I really need here, but I think it is good for general robotics knowledge}
     \note[item]{Also, introduction+fabmap 1.0 apply to all 3 articles (summary in all)}
 \end{frame}
@@ -59,9 +60,8 @@
         \href{https://www.youtube.com/watch?v=y7OnimZRj2w}{\includegraphics[width=1.0\textwidth]{./media/loop_closure.png}}
         {\tiny Source: GLO-4001/GLO-7021 Introduction à la robotique mobile}
     \end{center}
-    \note[item]{Overview: position, features, uncertainty/covariance, path/loop}
-    \note[item]{SLAM demo... Find points, update map...}
-    \note[item]{Loop closure}
+    \note[item]{Overview: position and features (aka landmark) along with uncertainty/covariance}
+    \note[item]{Loop closure... You don't want false positive here ! aka 100\% precision}
 \end{frame}
 
 \begin{frame}{Perceptual Aliasing, Kidnapped Robot}
@@ -81,7 +81,7 @@
         \end{column}
     \end{columns}
     \note[item]{Perceptual aliasing is simply errors caused by similar appearance}
-    \note[item]{Kidnapped Robot ?}
+    \note[item]{Kidnapped Robot ? The robot is teleported somewhere else}
     \note[item]{Why is that a problem ?}
 \end{frame}
 

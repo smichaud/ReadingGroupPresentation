@@ -10,10 +10,8 @@
     \end{quotation}
     \begin{itemize}
         \item General intuition of the work in 2.0
-            %\begin{itemize}
-            %\item Multiple changes for scalability
-            %\end{itemize}
     \end{itemize}
+    \note[item]{Section: Fabmap 2}
     \note[item]{Read quotation}
     \note[item]{I will not go into details...}
     \note[item]{A lot of small changes}
@@ -33,10 +31,8 @@
             \end{enumerate}
         \item Implementation in O(\#vocab)
     \end{itemize}
-    \note[item]{Sparse approx of the FAB-MAP model}
-    \note[item]{Implementation using inverted index... What is it ?}
-    \note[item]{If a document is considered as a list of word identifiers, then an inverted index maintains the inverse mapping from words to documents.}
-    \note[item]{Appearance likelihood was changed in two ways to work with inverted index}
+    \note[item]{Document is considered as a list of word identifiers, inverted index:mapping from words to documents.}
+    \note[item]{Appearance likelihood was changed...to work with inverted index}
     \note[item]{Negative observations greatly outnumber positive ones, and are also generally less informative}
     \note[item]{Ignoring negatives yield bad results}
     \note[item]{*Single* probabilistic term for all observations of a place. Lead to some (negligible) information lost}
@@ -72,21 +68,12 @@
     \note[item]{After each k-means iteration, if any two cluster centers are closer than a fixed threshold, one of the two cluster centers is re-initialized to a random location.}
 \end{frame}
 
-% [TODO]: Talk about Naives bayes vs CLT - 2015-09-26 01:36pm
-
-\begin{frame}{K-Means Words}
-    \includegraphics[width=0.5\textwidth]{./media/words_fabmap2a.png}
-    \includegraphics[width=0.5\textwidth]{./media/words_fabmap2b.png}
-    \note[item]{Result changes for fixed-radius initialization}
-    \note[item]{a) show words using the fixed radius initialization...}
-    \note[item]{and b) is without change}
-\end{frame}
-
 \subsection{Results}
 \begin{frame}{Results}
     \begin{columns}
         \begin{column}{0.4\textwidth}
             \begin{itemize}
+                \item Validate on 1000~km dataset
                 \item Ground thruth: GPS
                 \item Same place < 40m
                     \begin{itemize}
@@ -99,6 +86,7 @@
             \includegraphics[width=1.0\textwidth]{./media/map_fabmap2.png}
         \end{column}
     \end{columns}
+    \note[item]{Section: Results}
     \note[item]{Validate the work on a 1000km data set}
     \note[item]{Really aimed at large scale (other with 66km but they have the biggest)}
 \end{frame}
@@ -107,6 +95,16 @@
     \begin{center}
         \includegraphics[width=1.0\textwidth]{./media/results_geo_verif.png}
     \end{center}
+    \note[item]{Baseline refers to the system without the geometric check and with a uniform position prior at each timestep}
+    \note[item]{Another important thing here is the value of the geometric verification}
+\end{frame}
+
+\begin{frame}{K-Means Words}
+    \includegraphics[width=0.5\textwidth]{./media/words_fabmap2a.png}
+    \includegraphics[width=0.5\textwidth]{./media/words_fabmap2b.png}
+    \note[item]{Result changes for fixed-radius initialization}
+    \note[item]{a) show words using the fixed radius initialization...}
+    \note[item]{and b) is without change}
 \end{frame}
 
 \begin{frame}{K-Means}
@@ -130,6 +128,8 @@
         \includegraphics[width=1.0\textwidth]{./media/results_vs_tfidf.png}
     \end{center}
     \note[item]{Compared with tf-idf ranking measurements}
+    \note[item]{Term-frequency inverse-document-frequency (tf-idf) is a standard ranking metric used in most existing visual search engines}
+    \note[item]{We also demonstrate that the approach substantially outperforms the standard term-frequency inverse-document-frequency (tf-idf) ranking measure}
 \end{frame}
 
 \begin{frame}{Processing Time}
