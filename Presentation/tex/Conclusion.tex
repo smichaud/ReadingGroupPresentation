@@ -1,9 +1,28 @@
 \section{Conclusion}
 
+\subsection{Usage Note}
+\begin{frame}
+    \frametitle{Binaries and OpenFABMAP}
+    \begin{itemize}
+        \item There is FAB-MAP binaries available (2 codebooks)
+        \item OpenFABMAP is an implementation of FAB-MAP 1.0
+        \item Differences (binary BoW, size of descriptor, probabilistic equations)
+        \item Customizable (especially useful for codebook)
+        \item Can change keypoints detector and descriptors (STAR worked best for them)
+        \item OpenCV, ROS
+    \end{itemize}
+    \note[item]{Did my own test on Openfabmap...}
+\end{frame}
+
 \subsection{FAB-MAP 1.0}
 \begin{frame}{Conclusion (FAB-MAP 1.0)}
     \begin{itemize}
         \item Probabilistic framework for place recognition
+        \item Appearance-based (visual bag of words)
+        \item Capture the co-occurrence of the words (Chow-Liu tree)
+        \item Deal with new places (normalization term)
+        \item Handle thousands of places in real time
+        \item Detect enough loop closure for real applications, without false positives
     \end{itemize}
 \end{frame}
 
@@ -16,16 +35,5 @@
         \item Changed \textbf{k-means} (approximated, initialization, merged)
         \item Can only use \textbf{single observation}
         \item Validated on a \textbf{1000 km dataset}
-    \end{itemize}
-\end{frame}
-
-\subsection{OpenFABMAP}
-\begin{frame}{Conclusion (OpenFABMAP)}
-    \begin{itemize}
-        \item Implementation differ from FAB-MAP
-        \item Customizable (especially useful for codebook)
-        \item No implementation for FAB-MAP 2.0
-        \item OpenCV, ROS
-        \item Opinion from my test : nice, but really aim at 100\% precision and scalability
     \end{itemize}
 \end{frame}

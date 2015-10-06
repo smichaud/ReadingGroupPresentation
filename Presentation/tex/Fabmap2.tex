@@ -15,7 +15,9 @@
             %\end{itemize}
     \end{itemize}
     \note[item]{Read quotation}
-    \note[item]{I will not go into details... General intuition/main points.}
+    \note[item]{I will not go into details...}
+    \note[item]{A lot of small changes}
+    \note[item]{General intuition/main points.}
 \end{frame}
 
 \subsection{Modifications}
@@ -48,7 +50,7 @@
         \includegraphics[width=0.8\textwidth]{./media/geo_verif.jpg}
     \end{center}
     \begin{itemize}
-        \item Tested on the 100 most likely samples
+        \item Test on the 100 most likely samples
         \item Essential at large scale
     \end{itemize}
     \note[item]{Brief description of geometric verification}
@@ -76,6 +78,8 @@
     \includegraphics[width=0.5\textwidth]{./media/words_fabmap2a.png}
     \includegraphics[width=0.5\textwidth]{./media/words_fabmap2b.png}
     \note[item]{Result changes for fixed-radius initialization}
+    \note[item]{a) show words using the fixed radius initialization...}
+    \note[item]{and b) is without change}
 \end{frame}
 
 \subsection{Results}
@@ -117,6 +121,7 @@
     \begin{center}
         \includegraphics[width=1.0\textwidth]{./media/results2.png}
     \end{center}
+    \note[item]{Finally, we also investigated the importance of learning the Chow Liu tree by comparing against a Naive Bayes formulation which neglects the cor- relations between words.}
     \note[item]{Maybe table 3, indicate that CL vs NB for 100\% precision}
 \end{frame}
 
@@ -134,4 +139,5 @@
         \item 60ms quantization
         \item 4400 times faster than 1.0
     \end{itemize}
+    \note[item]{Features are detected in raw sensory data, and these features are then quantized with respect to a vocabulary, yielding visual words.}
 \end{frame}
